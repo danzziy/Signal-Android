@@ -49,13 +49,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.DimenRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.LifecycleOwner;
-
 import com.annimon.stream.Stream;
 
 import org.thoughtcrime.securesms.BindableConversationItem;
@@ -128,6 +121,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
+import androidx.annotation.DimenRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LifecycleOwner;
 
 import static org.thoughtcrime.securesms.util.ThemeUtil.isDarkTheme;
 
@@ -420,7 +420,11 @@ public class ConversationItem extends LinearLayout implements BindableConversati
 
   private void setBubbleState(MessageRecord messageRecord) {
     if (messageRecord.isOutgoing() && !messageRecord.isRemoteDelete()) {
-      bodyBubble.getBackground().setColorFilter(Color.rgb(88,100,220), PorterDuff.Mode.MULTIPLY);
+      bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
+
+      if(DynamicTheme.isDarkTheme(context)){
+        bodyBubble.getBackground().setColorFilter(Color.rgb(88,100,220), PorterDuff.Mode.MULTIPLY);
+      }
       footer.setTextColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_text_secondary_color));
       footer.setIconColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_icon_color));
       footer.setOnlyShowSendingStatus(false, messageRecord);
