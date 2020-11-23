@@ -421,6 +421,10 @@ public class ConversationItem extends LinearLayout implements BindableConversati
   private void setBubbleState(MessageRecord messageRecord) {
     if (messageRecord.isOutgoing() && !messageRecord.isRemoteDelete()) {
       bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
+
+      if(DynamicTheme.isDarkTheme(context)){
+        bodyBubble.getBackground().setColorFilter(Color.rgb(88,100,220), PorterDuff.Mode.MULTIPLY);
+      }
       footer.setTextColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_text_secondary_color));
       footer.setIconColor(ThemeUtil.getThemedColor(context, R.attr.conversation_item_sent_icon_color));
       footer.setOnlyShowSendingStatus(false, messageRecord);
