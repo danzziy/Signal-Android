@@ -18,12 +18,6 @@ import androidx.annotation.NonNull;
 import static org.webrtc.ContextUtils.getApplicationContext;
 
 public class SplashActivity extends MainFragment {
-    SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-    boolean isLight = pref.getBoolean("theme_nav",true);
-//
-//    int nightModeFlags =
-//            getContext().getResources().getConfiguration().uiMode &
-//                    Configuration.UI_MODE_NIGHT_MASK;
 
     public static SplashActivity newInstance() {
         return new SplashActivity();
@@ -36,28 +30,8 @@ public class SplashActivity extends MainFragment {
     }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
-       // Log.d("THEME USED", R.attr.theme_type);
-//        switch (nightModeFlags) {
-//            case Configuration.UI_MODE_NIGHT_YES:
-//                isLight = false;
-//                break;
-//
-//            case Configuration.UI_MODE_NIGHT_NO:
-//                isLight = true;
-//                break;
-//
-//            case Configuration.UI_MODE_NIGHT_UNDEFINED:
-//                isLight = true;
-//                break;
-//
-//        }
         return inflater.inflate(R.layout.activity_splash, container, false);
-//        if(isLight){
-//            return inflater.inflate(R.layout.activity_splash, container, false);
-//        }else{
-//            return inflater.inflate(R.layout.activity_splash_dark, container, false);
-//
-//        }
+
     }
 
 //    @Override
