@@ -2,7 +2,10 @@ package org.thoughtcrime.securesms;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +18,12 @@ import org.thoughtcrime.securesms.conversationlist.ConversationListFragment;
 import org.thoughtcrime.securesms.groups.ui.creategroup.CreateGroupActivity;
 import org.thoughtcrime.securesms.insights.InsightsLauncher;
 import org.thoughtcrime.securesms.recipients.RecipientId;
+import org.thoughtcrime.securesms.util.DynamicTheme;
+
+import android.content.Context;
+import android.util.Log;
+
+import static org.webrtc.ContextUtils.getApplicationContext;
 
 public class MainNavigator {
 
@@ -38,8 +47,20 @@ public class MainNavigator {
     }
 
     getFragmentManager().beginTransaction()
-                        .add(R.id.fragment_container, ConversationListFragment.newInstance())
-                        .commit();
+            .add(R.id.fragment_container, SplashActivity.newInstance())
+            .commit();
+    new Handler().postDelayed(new Runnable(){
+                                //            @Override
+            public void run(){
+
+              getFragmentManager().beginTransaction()
+                      .add(R.id.fragment_container, ConversationListFragment.newInstance())
+                      .commit();
+            }
+        },500);
+//    getFragmentManager().beginTransaction()
+//                        .add(R.id.fragment_container, ConversationListFragment.newInstance())
+//                        .commit();
   }
 
   /**

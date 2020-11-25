@@ -21,6 +21,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -130,6 +131,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import static org.thoughtcrime.securesms.util.ThemeUtil.isDarkTheme;
+import static org.webrtc.ContextUtils.getApplicationContext;
 
 /**
  * A view that displays an individual conversation item within a conversation
@@ -421,7 +423,6 @@ public class ConversationItem extends LinearLayout implements BindableConversati
   private void setBubbleState(MessageRecord messageRecord) {
     if (messageRecord.isOutgoing() && !messageRecord.isRemoteDelete()) {
       bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
-
       if(DynamicTheme.isDarkTheme(context)){
         bodyBubble.getBackground().setColorFilter(Color.rgb(88,100,220), PorterDuff.Mode.MULTIPLY);
       }
