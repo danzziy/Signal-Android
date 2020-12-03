@@ -58,9 +58,6 @@ public class MainNavigator {
                       .commit();
             }
         },500);
-//    getFragmentManager().beginTransaction()
-//                        .add(R.id.fragment_container, ConversationListFragment.newInstance())
-//                        .commit();
   }
 
   /**
