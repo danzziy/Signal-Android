@@ -9,7 +9,7 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/splash_icon"
         android:layout_width="216dp"
         android:layout_height="178dp"
         android:background="#00EE4C59"
